@@ -12,7 +12,7 @@ Build the application:
 
 Create the Docker image:
 
-    docker build -t javaee-proxy .
+    docker build -t javaee-rest-api .
 
 Run
 ---

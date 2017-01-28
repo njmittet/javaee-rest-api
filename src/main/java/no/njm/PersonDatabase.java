@@ -1,6 +1,7 @@
 package no.njm;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Singleton
+@ApplicationScoped
 class PersonDatabase {
 
     private static final int INITIAL_ID = 1;
@@ -26,9 +28,7 @@ class PersonDatabase {
 
     List<Person> listPersons() {
         List<Person> list = new ArrayList<>(persons.size());
-        persons.entrySet()
-               .stream()
-               .forEach(entry -> list.add(entry.getValue()));
+        persons.entrySet().forEach(entry -> list.add(entry.getValue()));
         return list;
     }
 

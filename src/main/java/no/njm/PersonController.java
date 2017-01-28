@@ -12,8 +12,12 @@ import java.util.Optional;
 @Path("persons")
 public class PersonController {
 
-    @Inject
     private PersonDatabase persons;
+
+    @Inject
+    public PersonController(PersonDatabase persons) {
+        this.persons = persons;
+    }
 
     @GET
     @Produces({"application/xml", "application/json"})
@@ -24,7 +28,7 @@ public class PersonController {
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public Response get(@PathParam("id") Long id) {
+    public Response getPerson(@PathParam("id") Long id) {
         Optional<Person> person = persons.getPerson(id);
         if (person.isPresent()) {
             return Response.ok(person.get()).build();

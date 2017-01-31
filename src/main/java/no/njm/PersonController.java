@@ -1,5 +1,7 @@
 package no.njm;
 
+import no.njm.model.Person;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

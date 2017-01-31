@@ -1,9 +1,9 @@
-package no.njm;
+package no.njm.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-class Person {
+public class Person {
 
     private long id;
     private String firstName;
@@ -12,7 +12,7 @@ class Person {
     public Person() {
     }
 
-    Person(long id, String firstName, String lastName) {
+    public Person(long id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

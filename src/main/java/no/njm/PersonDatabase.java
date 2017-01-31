@@ -1,5 +1,7 @@
 package no.njm;
 
+import no.njm.model.Person;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
 import java.util.ArrayList;

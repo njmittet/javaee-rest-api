@@ -1,5 +1,6 @@
-package no.njm;
+package no.njm.rest;
 
+import no.njm.PersonRepository;
 import no.njm.model.Person;
 
 import javax.inject.Inject;

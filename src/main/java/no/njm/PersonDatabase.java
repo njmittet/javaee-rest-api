@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Singleton
-class PersonDatabase {
+class PersonDatabase implements PersonRepository {
 
     private static final int INITIAL_ID = 1;
     private final AtomicLong counter = new AtomicLong(INITIAL_ID);
@@ -26,13 +26,15 @@ class PersonDatabase {
         persons.put(second, new Person(second, "Kari", "Nordmann"));
     }
 
-    List<Person> listPersons() {
+    @Override
+    public List<Person> listPersons() {
         List<Person> list = new ArrayList<>(persons.size());
         persons.entrySet().forEach(entry -> list.add(entry.getValue()));
         return list;
     }
 
-    Optional<Person> getPerson(long id) {
+    @Override
+    public Optional<Person> getPerson(long id) {
         if (persons.containsKey(id)) {
             return Optional.of(persons.get(id));
         }

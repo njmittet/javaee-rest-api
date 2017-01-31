@@ -15,7 +15,7 @@ import java.util.Optional;
 public class PersonController {
 
     @Inject
-    private PersonDatabase persons;
+    private PersonRepository persons;
 
     @GET
     @Produces({"application/xml", "application/json"})

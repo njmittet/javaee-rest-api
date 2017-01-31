@@ -1,7 +1,6 @@
 package no.njm;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +10,6 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Singleton
-@ApplicationScoped
 class PersonDatabase {
 
     private static final int INITIAL_ID = 1;

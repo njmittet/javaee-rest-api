@@ -1,4 +1,4 @@
-package no.njm;
+package no.njm.data;
 
 import no.njm.model.Person;
 

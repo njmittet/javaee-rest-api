@@ -134,9 +134,25 @@
                         <password>sa</password>
                     </security>
                 </datasource>
+                <datasource jndi-name="java:jboss/datasources/MysqlDS" pool-name="MysqlDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:mysql://javaee-db:3306/javaee?useSSL=false</connection-url>
+                    <driver>com.mysql</driver>
+                    <security>
+                        <user-name>javaee</user-name>
+                        <password>javaee</password>
+                    </security>
+                    <statement>
+                        <prepared-statement-cache-size>100</prepared-statement-cache-size>
+                        <share-prepared-statements>true</share-prepared-statements>
+                    </statement>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="com.mysql" module="com.mysql">
+                        <driver-class>com.mysql.jdbc.Driver</driver-class>
+                        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
                     </driver>
                 </drivers>
             </datasources>

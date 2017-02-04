@@ -1,8 +1,10 @@
 package no.njm.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
+@XmlType(propOrder={"id", "firstName", "lastName"})
 public class Person {
 
     private long id;

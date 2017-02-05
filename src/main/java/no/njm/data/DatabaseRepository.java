@@ -13,9 +13,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Singleton
-class PersonDatabase implements PersonRepository {
+class DatabaseRepository implements PersonRepository {
 
-    private static final Logger log = Logger.getLogger(PersonDatabase.class);
+    private static final Logger log = Logger.getLogger(DatabaseRepository.class);
 
     @PersistenceContext
     private EntityManager entityManager;

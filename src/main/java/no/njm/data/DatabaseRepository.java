@@ -5,12 +5,12 @@ import org.jboss.logging.Logger;
 
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Singleton
 class DatabaseRepository implements PersonRepository {
@@ -22,25 +22,31 @@ class DatabaseRepository implements PersonRepository {
 
     public List<Person> listPersons() {
         List<Person> persons = new ArrayList<>();
-        Query query = entityManager.createNativeQuery("SELECT firstname, lastname FROM person");
+        Query query = entityManager.createNativeQuery("SELECT id, firstname, lastname FROM person");
         List<Object[]> resultList = query.getResultList();
-
-        long i = 0;
         for (Object[] result : resultList) {
-            persons.add(new Person(i, (String) result[0], (String) result[1]));
-            i++;
+            persons.add(personFromResult(result));
         }
         return persons;
     }
 
     @Override
     public Optional<Person> getPerson(long id) {
-        List<Person> filered = listPersons().stream()
-                                            .filter(p -> p.getId() == id)
-                                            .collect(Collectors.toList());
-        if (filered.size() > 0) {
-            return Optional.of(filered.get(0));
+        Query query = entityManager.createNativeQuery("SELECT id, firstname, lastname FROM person WHERE id = :id");
+        query.setParameter("id", id);
+        try {
+            Object[] result = (Object[]) query.getSingleResult();
+            return Optional.of(personFromResult(result));
+        } catch (NoResultException e) {
+            log.debug("Could not find person with id: " + id);
+            return Optional.empty();
         }
-        return Optional.empty();
+    }
+
+    private Person personFromResult(Object[] result) {
+        Integer id = (Integer) result[0];
+        String firstName = (String) result[1];
+        String lastName = (String) result[2];
+        return new Person(id, firstName, lastName);
     }
 }

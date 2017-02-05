@@ -7,14 +7,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder={"id", "firstName", "lastName"})
 public class Person {
 
-    private long id;
+    private int id;
     private String firstName;
     private String lastName;
 
     public Person() {
     }
 
-    public Person(long id, String firstName, String lastName) {
+    public Person(int id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,7 +24,7 @@ public class Person {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

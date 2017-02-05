@@ -1,42 +1,45 @@
 package no.njm.data;
 
 import no.njm.model.Person;
+import org.jboss.logging.Logger;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 @Singleton
 class PersonDatabase implements PersonRepository {
 
-    private static final int INITIAL_ID = 1;
-    private final AtomicLong counter = new AtomicLong(INITIAL_ID);
-    private final Map<Long, Person> persons = new HashMap<>();
+    private static final Logger log = Logger.getLogger(PersonDatabase.class);
 
-    @PostConstruct
-    public void init() {
-        long first = counter.getAndIncrement();
-        persons.put(first, new Person(first, "Ola", "Dunk"));
-        long second = counter.getAndIncrement();
-        persons.put(second, new Person(second, "Kari", "Nordmann"));
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    @Override
     public List<Person> listPersons() {
-        List<Person> list = new ArrayList<>(persons.size());
-        persons.entrySet().forEach(entry -> list.add(entry.getValue()));
-        return list;
+        List<Person> persons = new ArrayList<>();
+        Query query = entityManager.createNativeQuery("SELECT firstname, lastname FROM person");
+        List<Object[]> resultList = query.getResultList();
+
+        long i = 0;
+        for (Object[] result : resultList) {
+            persons.add(new Person(i, (String) result[0], (String) result[1]));
+            i++;
+        }
+        return persons;
     }
 
     @Override
     public Optional<Person> getPerson(long id) {
-        if (persons.containsKey(id)) {
-            return Optional.of(persons.get(id));
+        List<Person> filered = listPersons().stream()
+                                            .filter(p -> p.getId() == id)
+                                            .collect(Collectors.toList());
+        if (filered.size() > 0) {
+            return Optional.of(filered.get(0));
         }
         return Optional.empty();
     }

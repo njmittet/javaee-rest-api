@@ -1,0 +1,15 @@
+version: '2'
+services:
+  db:
+    container_name: javaee-db
+    image: 'javaee-db'
+    build:
+      context: ./docker/mysql/
+  web:
+    container_name: javaee-web
+    image: 'javaee-web'
+    build: .
+    depends_on:
+      - db
+    ports:
+      - 8080:8080 

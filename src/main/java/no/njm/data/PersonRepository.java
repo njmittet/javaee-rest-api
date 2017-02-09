@@ -1,6 +1,6 @@
 package no.njm.data;
 
-import no.njm.model.Person;
+import no.njm.rest.model.Person;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package no.njm.model;
+package no.njm.rest.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

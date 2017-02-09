@@ -1,7 +1,7 @@
 package no.njm.rest;
 
 import no.njm.data.PersonRepository;
-import no.njm.model.Person;
+import no.njm.rest.model.Person;
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 
 import javax.inject.Inject;

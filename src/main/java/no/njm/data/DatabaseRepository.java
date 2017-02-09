@@ -1,6 +1,6 @@
 package no.njm.data;
 
-import no.njm.model.Person;
+import no.njm.rest.model.Person;
 import org.jboss.logging.Logger;
 
 import javax.inject.Singleton;

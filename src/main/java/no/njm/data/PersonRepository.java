@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface PersonRepository {
 
-    List<Person> listPersons();
+    List<Person> getPersons();
 
     Optional<Person> getPerson(long id);
 }

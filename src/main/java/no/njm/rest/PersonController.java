@@ -24,7 +24,7 @@ public class PersonController {
     @Wrapped(element = "persons")
     @Produces({"application/xml", "application/json"})
     public Response getPersons() {
-        List<Person> persons = repository.listPersons();
+        List<Person> persons = repository.getPersons();
 
         // Eliminate type erasure when wrapping List<> in a a Response object
         GenericEntity<List<Person>> entity = new GenericEntity<List<Person>>(persons) {

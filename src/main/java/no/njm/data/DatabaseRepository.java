@@ -20,7 +20,7 @@ class DatabaseRepository implements PersonRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Person> listPersons() {
+    public List<Person> getPersons() {
         List<Person> persons = new ArrayList<>();
         Query query = entityManager.createNativeQuery("SELECT id, firstname, lastname FROM person");
         List<Object[]> resultList = query.getResultList();

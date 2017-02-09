@@ -24,9 +24,7 @@ class DatabaseRepository implements PersonRepository {
         List<Person> persons = new ArrayList<>();
         Query query = entityManager.createNativeQuery("SELECT id, firstname, lastname FROM person");
         List<Object[]> resultList = query.getResultList();
-        for (Object[] result : resultList) {
-            persons.add(personFromResult(result));
-        }
+        resultList.forEach(record -> persons.add(personFromResult(record)));
         return persons;
     }
 

@@ -6,17 +6,17 @@ FLUSH PRIVILEGES;
 
 USE javaee;
 
-CREATE TABLE person (
+CREATE TABLE identity (
   id        INT          NOT NULL AUTO_INCREMENT,
   firstname VARCHAR(100) NOT NULL,
   lastname  VARCHAR(40)  NOT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT INTO person (firstname, lastname) VALUES ('Isaac', 'Neewton');
-INSERT INTO person(firstname, lastname) VALUES ('Marie', 'Curie');
-INSERT INTO person(firstname, lastname) VALUES ('Charles', 'Darwin');
-INSERT INTO person (firstname, lastname) VALUES ('Stephen', 'Hawking');
-INSERT INTO person (firstname, lastname) VALUES ('Albert', 'Einstein');
+INSERT INTO identity (firstname, lastname) VALUES ('Isaac', 'Neewton');
+INSERT INTO identity (firstname, lastname) VALUES ('Marie', 'Curie');
+INSERT INTO identity (firstname, lastname) VALUES ('Charles', 'Darwin');
+INSERT INTO identity (firstname, lastname) VALUES ('Stephen', 'Hawking');
+INSERT INTO identity (firstname, lastname) VALUES ('Albert', 'Einstein');
 
 COMMIT;

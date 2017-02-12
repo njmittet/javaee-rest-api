@@ -20,13 +20,12 @@ class DatabaseRepository implements IdentityRepository {
     private EntityManager em;
 
     public List<Identity> listIdentities() {
-        return (List<Identity>) em.createNativeQuery("SELECT id, firstname, lastname FROM identity", Identity.class)
-                                  .getResultList();
+        return (List<Identity>) em.createNamedQuery("selectIdentities").getResultList();
     }
 
     @Override
     public Optional<Identity> findIdentity(long id) {
-        Query query = em.createNativeQuery("SELECT id, firstname, lastname FROM identity WHERE id = :id", Identity.class);
+        Query query = em.createNamedQuery("selectIdentityById");
         query.setParameter("id", id);
         try {
             Identity identity = (Identity) query.getSingleResult();

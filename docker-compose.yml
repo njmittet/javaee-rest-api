@@ -6,7 +6,7 @@ services:
     build:
       context: ./docker/mysql/
     ports:
-      - 3306
+      - 3306:3306
   web:
     container_name: javaee-web
     image: 'javaee-web'

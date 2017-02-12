@@ -13,7 +13,7 @@ CREATE TABLE identity (
   PRIMARY KEY (id)
 );
 
-INSERT INTO identity (firstname, lastname) VALUES ('Isaac', 'Neewton');
+INSERT INTO identity (firstname, lastname) VALUES ('Isaac', 'Newton');
 INSERT INTO identity (firstname, lastname) VALUES ('Marie', 'Curie');
 INSERT INTO identity (firstname, lastname) VALUES ('Charles', 'Darwin');
 INSERT INTO identity (firstname, lastname) VALUES ('Stephen', 'Hawking');

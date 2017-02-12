@@ -29,6 +29,11 @@ public class Identity implements Serializable {
     public Identity() {
     }
 
+    public Identity(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public int getId() {
         return id;
     }

@@ -10,4 +10,6 @@ public interface IdentityRepository {
     List<Identity> listIdentities();
 
     Optional<Identity> findIdentity(long id);
+
+    Identity storeIdentity(Identity identity);
 }

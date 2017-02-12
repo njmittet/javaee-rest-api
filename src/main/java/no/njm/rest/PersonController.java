@@ -54,6 +54,6 @@ public class PersonController {
     }
 
     private Person identityToPerson(Identity i) {
-        return new Person(i.getId(), i.getFirstname(), i.getLastname());
+        return new Person(i.getId(), i.getFirstName(), i.getLastName());
     }
 }

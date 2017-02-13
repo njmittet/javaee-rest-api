@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name="identity")
+@Table(name = "identity")
 @NamedNativeQueries({
         @NamedNativeQuery(name = "selectIdentities", query = "SELECT id, firstname, lastname FROM identity", resultClass = Identity.class),
         @NamedNativeQuery(name = "selectIdentityById", query = "SELECT id, firstname, lastname FROM identity WHERE id = :id", resultClass = Identity.class)

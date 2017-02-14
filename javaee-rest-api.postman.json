@@ -1,0 +1,78 @@
+{
+	"variables": [],
+	"info": {
+		"name": "javaee-rest-api",
+		"_postman_id": "ad12cd9b-1a08-fefc-7d6d-64db89b35f2f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/persons",
+			"request": {
+				"url": "http://localhost:8080/javaee-rest-api/persons/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/persons/1",
+			"request": {
+				"url": "http://localhost:8080/javaee-rest-api/persons/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/persons",
+			"request": {
+				"url": "http://localhost:8080/javaee-rest-api/persons/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "lastname",
+							"value": "",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

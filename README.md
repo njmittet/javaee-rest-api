@@ -1,7 +1,7 @@
 javaee-rest-api
 ===============
 
-Simple [Java EE 7](http://www.oracle.com/technetwork/java/javaee/index.html) [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) application for testing purposes. Use the Dockerfile to run the application in a [Docker](https://www.docker.com/) container.
+Simple [Java EE 7](http://www.oracle.com/technetwork/java/javaee/index.html) [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) application with a database backend, created for testing purposes. 
 
 Build
 -----
@@ -9,20 +9,12 @@ Build
 Build the application:
 
     mvn clean install
-
-Create the Docker image:
-
-    docker build -t javaee-rest-api .
-
+    
 Run
 ---
 
 Run in Docker:
 
-    docker run -it --rm -P --name javaee-rest-api javaee-rest-api
+    docker-compose up -d --build
 
-Run in Wildfly:
-~~~~
-cp target/javaee-rest-api.war $WILDFLY/standalone/deployments
-$WILDFLY/bin/standalone.sh
-~~~~
+The above command builds and starts a MySQL image, prepopulated with sample data, as well as the Wildfly Java EE container image with the application.

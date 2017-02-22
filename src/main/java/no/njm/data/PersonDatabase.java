@@ -21,9 +21,9 @@ class PersonDatabase implements PersonRepository {
     @PostConstruct
     public void init() {
         long first = counter.getAndIncrement();
-        persons.put(first, new Person(first, "Ola", "Dunk"));
+        persons.put(first, new Person(first, "Isaac", "'Newton"));
         long second = counter.getAndIncrement();
-        persons.put(second, new Person(second, "Kari", "Nordmann"));
+        persons.put(second, new Person(second, "Charles", "Darwin"));
     }
 
     @Override
